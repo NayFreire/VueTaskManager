@@ -1,7 +1,7 @@
 <template>
 <div class="container">
 	<Header title="Task Manager"/>
-	<Tasks :tasks="tasks"/>
+	<Tasks @delete-task="deleteTask" :tasks="tasks"/>
 </div>
 </template>
 
@@ -20,6 +20,13 @@ import Tasks from './components/Tasks.vue'
 				tasks: []
 			}
 		},
+		methods:{
+			deleteTask(id){
+				if(confirm("Are you sure?")){
+					this.tasks = this.tasks.filter((task) => task.id !== id)
+				}
+			}
+		},		
 		created(){
 			this.tasks = [
 				{
