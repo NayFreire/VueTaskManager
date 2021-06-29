@@ -1,14 +1,17 @@
 <template>
-  <h1>Hello World</h1>
+<div class="container">
+	<Header title="Task Manager"/>
+</div>
 </template>
 
 <script>
-  export default {
-    name: 'App',
-    components: {
-      
-    }
-  }
+import Header from './components/Header'
+	export default {
+    	name: 'App',
+    	components: { 
+			Header
+		}
+	}
 </script>
 
 <style>
