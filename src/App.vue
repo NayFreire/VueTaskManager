@@ -58,8 +58,9 @@ import AddTask from './components/AddTask'
 			async fetchTasks(){
 				//Getting the data from the file db.json
 				const res = await fetch('api/tasks')
-
+				
 				const data = await res.json()
+				console.log('data', data)
 
 				return data
 			},
@@ -68,7 +69,6 @@ import AddTask from './components/AddTask'
 				const res = await fetch(`api/tasks/${id}`)
 
 				const data = await res.json()
-
 				return data
 			}
 		},		
