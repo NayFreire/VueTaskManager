@@ -1,7 +1,12 @@
 <template>
 <div class="container">
-	<Header title="Task Manager"/>
-	<AddTask @add-task="addTask"/>
+	<Header 
+		@toggle-add-task="toggleAddTask" 
+		title="Task Manager"
+	/>
+	<div v-show="showAddTask">
+		<AddTask @add-task="addTask"/>
+	</div>
 	<Tasks 
 		@toggle-reminder="toggleReminder" 
 		@delete-task="deleteTask" 
@@ -24,7 +29,8 @@ import AddTask from './components/AddTask'
 		},
 		data(){
 			return{
-				tasks: []
+				tasks: [],
+				showAddTask: false
 			}
 		},
 		methods:{
@@ -43,6 +49,10 @@ import AddTask from './components/AddTask'
 			addTask(newTask){
 				// this.tasks.push(newTask) //My way of creating a new task
 				this.tasks = [...this.tasks, newTask] //Videos' way of creating a new task
+			},
+			toggleAddTask(){
+				this.showAddTask = !this.showAddTask
+				console.log(this.showAddTask)
 			}
 		},		
 		created(){
