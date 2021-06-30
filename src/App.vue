@@ -1,7 +1,7 @@
 <template>
 <div class="container">
 	<Header title="Task Manager"/>
-	<AddTask />
+	<AddTask @add-task="addTask"/>
 	<Tasks 
 		@toggle-reminder="toggleReminder" 
 		@delete-task="deleteTask" 
@@ -39,6 +39,10 @@ import AddTask from './components/AddTask'
 					(task) => task.id === id ? 
 					{...task, reminder: !task.reminder} : task
 				)
+			},
+			addTask(newTask){
+				// this.tasks.push(newTask) //My way of creating a new task
+				this.tasks = [...this.tasks, newTask] //Videos' way of creating a new task
 			}
 		},		
 		created(){
