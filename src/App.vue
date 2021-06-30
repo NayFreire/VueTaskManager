@@ -31,7 +31,11 @@ import Tasks from './components/Tasks.vue'
 				}
 			},
 			toggleReminder(id){
-				console.log(id)
+				this.tasks = this.tasks.map(
+					//If task.id === id, the task reminder will change it's value. 
+					(task) => task.id === id ? 
+					{...task, reminder: !task.reminder} : task
+				)
 			}
 		},		
 		created(){
