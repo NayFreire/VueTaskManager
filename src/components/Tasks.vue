@@ -1,6 +1,10 @@
 <template>
     <div :key="task.id" v-for="task in tasks">
-        <Task @delete-task="$emit('delete-task', task.id)" :task="task"/>
+        <Task 
+            @toggle-reminder="$emit('toggle-reminder', task.id)" 
+            @delete-task="$emit('delete-task', task.id)" 
+            :task="task"
+        />
     </div>
 </template>
 
@@ -16,6 +20,6 @@
             tasks: Array
         },
         // Since the Task component has the 'delete-task' emit, we need to use emits to not get the following warning: "Extraneous non-emits event listeners (deleteTask) were passed to component but could not be automatically inherited because component renders fragment or text root nodes. If the listener is intended to be a component custom event listener only, declare it using the "emits" option.""
-        emits: ['delete-task']
+        emits: ['delete-task', 'toggle-reminder']
     }
 </script>

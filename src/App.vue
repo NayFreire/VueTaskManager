@@ -1,7 +1,11 @@
 <template>
 <div class="container">
 	<Header title="Task Manager"/>
-	<Tasks @delete-task="deleteTask" :tasks="tasks"/>
+	<Tasks 
+		@toggle-reminder="toggleReminder" 
+		@delete-task="deleteTask" 
+		:tasks="tasks"
+	/>
 </div>
 </template>
 
@@ -25,6 +29,9 @@ import Tasks from './components/Tasks.vue'
 				if(confirm("Are you sure?")){
 					this.tasks = this.tasks.filter((task) => task.id !== id)
 				}
+			},
+			toggleReminder(id){
+				console.log(id)
 			}
 		},		
 		created(){
