@@ -47,7 +47,8 @@ import AddTask from './components/AddTask'
 					{...task, reminder: !task.reminder} : task
 				)
 			},
-			addTask(newTask){
+			async addTask(newTask){
+				const res = await fetch('api/tasks')
 				// this.tasks.push(newTask) //My way of creating a new task
 				this.tasks = [...this.tasks, newTask] //Videos' way of creating a new task
 			},
